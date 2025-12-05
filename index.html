@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terapia Ocupacional - Dewey University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C40123;
+            --secondary: #3fa9f5;
+            --accent: #3fa9f5;
+            --dark: #2C2C2C;
+            --light: #F8F9FA;
+            --cream: #edecedff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #C40123 0%, #3fa9f5 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(63,169,245,0.2) 0%, transparent 70%);
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .dewey-logo {
+            width: 500px;
+            max-width: 90%;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            filter: drop-shadow(0 8px 30px rgba(0,0,0,0.3));
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            color: white;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: rgba(255,255,255,0.95);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: white;
+            color: #C40123;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+            background: #C40123;
+            color: white;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #C40123 0%, #3fa9f5 100%);
+        }
+
+        /* What is OT Section */
+        .what-is-ot {
+            background: white;
+            position: relative;
+        }
+
+        .what-is-ot::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #edecedff 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .text-content {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--dark);
+        }
+
+        .text-content p {
+            margin-bottom: 2rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .benefits-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--cream);
+            transition: all 0.3s ease;
+        }
+
+        .benefits-list li:hover {
+            padding-left: 3rem;
+            color: #C40123;
+        }
+
+        .benefits-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #C40123;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* Areas Section */
+        .areas {
+            background: linear-gradient(180deg, #edecedff 0%, #F8F9FA 100%);
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .area-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .area-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #C40123, #3fa9f5, #3fa9f5);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .area-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .area-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .area-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .area-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #C40123;
+            margin-bottom: 1rem;
+        }
+
+        .area-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Roles Section */
+        .roles {
+            background: var(--dark);
+            color: white;
+        }
+
+        .roles .section-title {
+            color: white;
+        }
+
+        .roles .section-title::after {
+            background: linear-gradient(90deg, #3fa9f5 0%, #C40123 100%);
+        }
+
+        .roles-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .role-card {
+            background: rgba(255,255,255,0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .role-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: scale(1.02);
+        }
+
+        .role-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #3fa9f5;
+        }
+
+        .role-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #edecedff;
+            font-style: italic;
+        }
+
+        .role-list {
+            list-style: none;
+        }
+
+        .role-list li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .role-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #3fa9f5;
+            font-weight: bold;
+        }
+
+        /* Locations Section */
+        .locations {
+            background: white;
+            text-align: center;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .location-card {
+            background: linear-gradient(135deg, #C40123 0%, #3fa9f5 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            transition: all 0.6s ease;
+        }
+
+        .location-card:hover::before {
+            top: -20%;
+            right: -20%;
+        }
+
+        .location-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Program Section */
+        .program {
+            background: linear-gradient(180deg, #edecedff 0%, white 100%);
+        }
+
+        .program-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .highlight {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .highlight-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #C40123 0%, #3fa9f5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #3fa9f5;
+            color: white;
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-title::after {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: scale(1.05);
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .contact-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .contact-value a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: #C40123;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-logo {
+            width: 400px;
+            max-width: 80%;
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid,
+            .roles-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .dewey-logo {
+                width: 350px;
+            }
+
+            .footer-logo {
+                width: 300px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <svg class="dewey-logo" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- DEWEY text -->
+                <text x="100" y="160" font-family="Libre Baskerville, serif" font-size="140" font-weight="700" fill="#C40123" letter-spacing="15">DEWEY</text>
+                <!-- Red line -->
+                <line x1="100" y1="190" x2="1100" y2="190" stroke="#C40123" stroke-width="8"/>
+                <!-- UNIVERSITY text -->
+                <text x="300" y="250" font-family="Libre Baskerville, serif" font-size="48" font-weight="400" fill="#666666" letter-spacing="18">UNIVERSITY</text>
+            </svg>
+            <h1 class="hero-title">Terapia<br>Ocupacional</h1>
+            <p class="hero-subtitle">Una carrera con propósito</p>
+            <a href="#programa" class="hero-cta">Descubre más</a>
+        </div>
+    </section>
+
+    <!-- What is OT -->
+    <section class="section what-is-ot">
+        <div class="container">
+            <h2 class="section-title fade-in">¿Qué es Terapia Ocupacional?</h2>
+            <div class="content-grid">
+                <div class="text-content fade-in">
+                    <p>La Terapia Ocupacional es una profesión de la salud enfocada en ayudar a las personas a participar en actividades significativas mediante el uso terapéutico de la ocupación.</p>
+                    <ul class="benefits-list">
+                        <li>Promueve la independencia y calidad de vida</li>
+                        <li>Atiende a personas de todas las edades</li>
+                        <li>Utiliza actividades con propósito para el bienestar físico, cognitivo y social</li>
+                    </ul>
+                </div>
+                <div class="text-content fade-in">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.5rem; color: #C40123;">¿Qué hace un Terapeuta Ocupacional?</h3>
+                    <ul class="benefits-list">
+                        <li>Recuperar habilidades motoras</li>
+                        <li>Mejorar destrezas sociales y cognitivas</li>
+                        <li>Adaptarse a discapacidades o condiciones</li>
+                        <li>Utilizar tecnología asistiva</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas of Occupation -->
+    <section class="section areas">
+        <div class="container">
+            <h2 class="section-title fade-in">Áreas de Ocupación</h2>
+            <div class="areas-grid">
+                <div class="area-card fade-in">
+                    <span class="area-icon">🏠</span>
+                    <h3 class="area-title">Vida Diaria</h3>
+                    <p class="area-desc">Actividades básicas e instrumentales para la independencia cotidiana</p>
+                </div>
+                <div class="area-card fade-in">
+                    <span class="area-icon">💤</span>
+                    <h3 class="area-title">Descanso y Sueño</h3>
+                    <p class="area-desc">Promoviendo patrones saludables de descanso</p>
+                </div>
+                <div class="area-card fade-in">
+                    <span class="area-icon">📚</span>
+                    <h3 class="area-title">Educación</h3>
+                    <p class="area-desc">Facilitando el aprendizaje y desarrollo académico</p>
+                </div>
+                <div class="area-card fade-in">
+                    <span class="area-icon">💼</span>
+                    <h3 class="area-title">Trabajo</h3>
+                    <p class="area-desc">Preparación y adaptación para el mundo laboral</p>
+                </div>
+                <div class="area-card fade-in">
+                    <span class="area-icon">🎮</span>
+                    <h3 class="area-title">Juego</h3>
+                    <p class="area-desc">Desarrollo a través de actividades lúdicas</p>
+                </div>
+                <div class="area-card fade-in">
+                    <span class="area-icon">⏰</span>
+                    <h3 class="area-title">Tiempo Libre</h3>
+                    <p class="area-desc">Disfrutar actividades significativas de ocio</p>
+                </div>
+                <div class="area-card fade-in">
+                    <span class="area-icon">👥</span>
+                    <h3 class="area-title">Participación Social</h3>
+                    <p class="area-desc">Fortaleciendo relaciones y conexiones comunitarias</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roles -->
+    <section class="section roles">
+        <div class="container">
+            <h2 class="section-title fade-in">Roles en Terapia Ocupacional</h2>
+            <div class="roles-comparison">
+                <div class="role-card fade-in">
+                    <h3 class="role-title">Terapeuta Ocupacional (TO)</h3>
+                    <p class="role-subtitle">El profesional líder del proceso terapéutico</p>
+                    <ul class="role-list">
+                        <li>Evalúa las necesidades del paciente</li>
+                        <li>Diseña el plan de intervención personalizado</li>
+                        <li>Ajusta metas según el progreso</li>
+                        <li>Supervisa a los asistentes</li>
+                    </ul>
+                </div>
+                <div class="role-card fade-in">
+                    <h3 class="role-title">Asistente en Terapia Ocupacional (ATO)</h3>
+                    <p class="role-subtitle">El ejecutor del plan terapéutico</p>
+                    <ul class="role-list">
+                        <li>Implementa las intervenciones diseñadas</li>
+                        <li>Apoya con técnicas terapéuticas</li>
+                        <li>Documenta el progreso del paciente</li>
+                        <li>Trabaja bajo supervisión del TO</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="section locations">
+        <div class="container">
+            <h2 class="section-title fade-in">¿Dónde trabaja un ATO/TO?</h2>
+            <div class="locations-grid">
+                <div class="location-card fade-in">
+                    <div class="location-icon">🏫</div>
+                    <h3 class="location-name">Escuelas</h3>
+                </div>
+                <div class="location-card fade-in">
+                    <div class="location-icon">🏥</div>
+                    <h3 class="location-name">Hospitales</h3>
+                </div>
+                <div class="location-card fade-in">
+                    <div class="location-icon">🏡</div>
+                    <h3 class="location-name">Centros de Envejecientes</h3>
+                </div>
+                <div class="location-card fade-in">
+                    <div class="location-icon">🧠</div>
+                    <h3 class="location-name">Salud Mental</h3>
+                </div>
+                <div class="location-card fade-in">
+                    <div class="location-icon">🏋️</div>
+                    <h3 class="location-name">Clínicas y Rehabilitación</h3>
+                </div>
+                <div class="location-card fade-in">
+                    <div class="location-icon">🌆</div>
+                    <h3 class="location-name">Programas Comunitarios</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Details -->
+    <section class="section program" id="programa">
+        <div class="container">
+            <h2 class="section-title fade-in">Sobre el Programa en Dewey University</h2>
+            <div class="program-highlights">
+                <div class="highlight fade-in">
+                    <div class="highlight-number">82</div>
+                    <p class="highlight-text">Créditos Académicos</p>
+                </div>
+                <div class="highlight fade-in">
+                    <div class="highlight-number">2</div>
+                    <p class="highlight-text">Prácticas Profesionales</p>
+                </div>
+                <div class="highlight fade-in">
+                    <div class="highlight-number">2</div>
+                    <p class="highlight-text">Campus Disponibles</p>
+                </div>
+            </div>
+            <div class="text-content fade-in" style="max-width: 800px; margin: 4rem auto; text-align: center;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem; color: #C40123;">Experiencia Práctica Desde el Primer Año</h3>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1.5rem;">Nuestro programa ofrece un enfoque hands-on con oportunidades de simulación, trabajo interdisciplinario y experiencia en escenarios reales.</p>
+                <div class="locations-grid" style="margin-top: 3rem;">
+                    <div class="location-card" style="background: linear-gradient(135deg, #C40123 0%, #8B0016 100%);">
+                        <div class="location-icon">📍</div>
+                        <h3 class="location-name">Hato Rey</h3>
+                    </div>
+                    <div class="location-card" style="background: linear-gradient(135deg, #3fa9f5 0%, #2E88C7 100%);">
+                        <div class="location-icon">📍</div>
+                        <h3 class="location-name">Manatí</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Contáctanos - Centro de Hato Rey</h2>
+            <div class="contact-grid">
+                <div class="contact-item fade-in">
+                    <div class="contact-label">Teléfono</div>
+                    <div class="contact-value"><a href="tel:7877108999">787-710-8999</a></div>
+                </div>
+                <div class="contact-item fade-in">
+                    <div class="contact-label">Coordinador del Programa</div>
+                    <div class="contact-value"><a href="mailto:jonathan.cortes@dewey.edu">jonathan.cortes@dewey.edu</a></div>
+                </div>
+                <div class="contact-item fade-in">
+                    <div class="contact-label">Directora del Programa</div>
+                    <div class="contact-value"><a href="mailto:nereida.marrero@dewey.edu">nereida.marrero@dewey.edu</a></div>
+                </div>
+                <div class="contact-item fade-in">
+                    <div class="contact-label">Decana de Asuntos Académicos</div>
+                    <div class="contact-value"><a href="mailto:maribel.olmo@dewey.edu">maribel.olmo@dewey.edu</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <svg class="footer-logo" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+            <!-- DEWEY text in white -->
+            <text x="100" y="160" font-family="Libre Baskerville, serif" font-size="140" font-weight="700" fill="#ffffff" letter-spacing="15">DEWEY</text>
+            <!-- Red line -->
+            <line x1="100" y1="190" x2="1100" y2="190" stroke="#C40123" stroke-width="8"/>
+            <!-- UNIVERSITY text in gray -->
+            <text x="300" y="250" font-family="Libre Baskerville, serif" font-size="48" font-weight="400" fill="#999999" letter-spacing="18">UNIVERSITY</text>
+        </svg>
+        <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Grado Asociado en Terapia Ocupacional</p>
+        <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.9rem;">Transforma vidas. Construye futuro. Sé parte del cambio.</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for CTA
+        document.querySelector('.hero-cta').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('#programa').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
